@@ -1,0 +1,17 @@
+version: '2'
+services:
+  gowiki:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    links:
+      - "mysql:mysql"
+  mysql:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=gowiki
+    ports:
+      - "3306:3306"
