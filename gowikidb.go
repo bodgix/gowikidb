@@ -81,6 +81,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err.Error())
 	}
+	defer db.Close()
 
 	tpls := make(templatesMap)
 	tpls["/view/"], err = template.ParseFiles("templates/view.html")
